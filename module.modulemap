@@ -1,0 +1,5 @@
+module CGd [system] {
+       header "/usr/local/include/gd.h"
+       link "gd"
+       export *
+}
