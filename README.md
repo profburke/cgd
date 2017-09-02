@@ -14,34 +14,36 @@ Create a new Swift project:
 
 Edit `Package.swift` to match the following:
 
-    import PackageDescription
+```
+import PackageDescription
 
-    let package = Package(
-        name: "testcgd",
-        dependencies: [
+let package = Package(
+    name: "testcgd",
+    dependencies: [
            .Package(url: "https://github.com/profburke/cgd.git", majorVersion: 1),
-        ]
-    )
-
+    ]
+)
+```
 
 Then edit `Sources/main.swift` so that it reads as follows:
 
-    import CGd
-    
-    let image = gdImageCreateTrueColor(400, 400)
-    
-    let black = gdImageColorAllocate(image, 0, 0, 0)
-    let orange = gdImageColorAllocate(image, 255, 165, 0)
-    let string = UnsafeMutablePointer<UInt8>(mutating: "Pumpkin Carving")
-    
-    gdImageFilledEllipse(image, 200, 200, 200, 200, orange)
-	gdImageString(image, gdFontGetGiant(), 20, 20, string, orange)
+```
+import CGd
 
-    let outputFile = fopen("output.png", "wb")
-    defer { fclose(outputFile) }
-    
-    gdImagePng(image, outputFile)
+let image = gdImageCreateTrueColor(400, 400)
 
+let black = gdImageColorAllocate(image, 0, 0, 0)
+let orange = gdImageColorAllocate(image, 255, 165, 0)
+let string = UnsafeMutablePointer<UInt8>(mutating: "Pumpkin Carving")
+
+gdImageFilledEllipse(image, 200, 200, 200, 200, orange)
+gdImageString(image, gdFontGetGiant(), 20, 20, string, orange)
+
+let outputFile = fopen("output.png", "wb")
+defer { fclose(outputFile) }
+
+gdImagePng(image, outputFile)
+```
 
 Now for building. 
 
