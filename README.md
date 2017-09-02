@@ -14,7 +14,7 @@ Create a new Swift project:
 
 Edit `Package.swift` to match the following:
 
-```
+```swift
 import PackageDescription
 
 let package = Package(
@@ -27,7 +27,7 @@ let package = Package(
 
 Then edit `Sources/main.swift` so that it reads as follows:
 
-```
+```swift
 import CGd
 
 let image = gdImageCreateTrueColor(400, 400)
